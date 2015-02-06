@@ -1,0 +1,19 @@
+{% load cms_tags %}
+
+<div class="panel {{ instance.context }}">
+	{% if instance.title and instance.title.strip %}
+		<div class="panel-heading">
+			<h3 class="panel-title">{{ instance.title }}</h3>
+		</div>
+	{% endif %}
+	<div class="panel-body">
+		{% for plugin in instance.child_plugin_instances %}
+			{% render_plugin plugin %}
+		{% endfor %}
+	</div>
+	{% if instance.footer and instance.footer.strip %}
+		<div class="panel-footer">
+			{{ instance.footer }}
+		</div>
+	{% endif %}
+</div>
